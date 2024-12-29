@@ -1,0 +1,216 @@
+/* Sayfanın tamamı için ayarlar */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Yatayda ortala */
+    align-items: center; /* Dikeyde ortala */
+    background-color: #f5f5f5; /* Arka plan rengi */
+    padding: 40px 20px; /* Üst-alt ve sağ-sol boşluk */
+    box-sizing: border-box;
+}
+
+/* Beyaz kutu için ayarlar */
+.container {
+    background-color: white; /* Beyaz kutunun arka planı */
+    border-radius: 10px; /* Köşeleri yuvarla */
+    padding: 30px; /* İçerik iç boşluğu */
+    width: 100%; /* Küçük ekranlar için %100 genişlik */
+    max-width: 600px; /* Maksimum genişlik */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    text-align: center; /* İçerik ortalansın */
+    box-sizing: border-box;
+}
+
+  h1 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  #criteria p {
+    margin: 5px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  
+  .status {
+    margin-right: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .fab {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #007bff;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .fab:hover {
+    background-color: #0056b3;
+  }
+
+  .fab span {
+    display: flex;
+    justify-content: center; /* Yatayda ortalar */
+    align-items: center; /* Dikeyde ortalar */
+    gap: 3px; /* Yıldızlar arasındaki boşluk */
+  }
+.header {
+    width: 100%;
+    background-color: #4a90e2;
+    color: white;
+    text-align: center;
+    padding: px 0;
+    font-size: 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.warning {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+.warning .icon {
+    flex-shrink: 0;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.warning .text {
+    color: red;
+}
+
+.input-container {
+    margin: 20px 0;
+    position: relative;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.password-visibility {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #4a90e2;
+}
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Seçenekler arasındaki mesafeyi kontrol eder */
+    margin: 20px 0;
+}
+
+.toggle-option {
+    font-size: 14px;
+    white-space: nowrap; /* Yazının taşmasını engeller */
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #4a90e2;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons-container button {
+    padding: 15px 25px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buttons-container button:hover {
+    background-color: #3a78c2;
+}
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generate</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="header">Password Generate</div>
+    <div class="container">
+    
+        <input type="text" id="usernameField"placeholder="Username">  
+        <input type="text" id="nameField" placeholder="Name">
+        <input type="text" id="surnameField" placeholder="Surname">
+
+        <!-- Şifre Girişi -->
+        <div class="input-container">
+            <input type="text" id="passwordField" placeholder="Generated Password">
+            <span class="password-visibility" onclick="togglePasswordVisibility()">👁️</span>
+        </div>
+         <!-- Şifre Kriterleri -->
+        <div id="uppercase" class="warning">
+            <span class="icon">❌</span>
+            <span class="text">Büyük harfli karaktere sahip değil</span>
+        </div>
+        <div id="length" class="warning">
+            <span class="icon">❌</span>
+            <span class="text">Minimum uzunluk 8 karakter olmalıdır</span>
+        </div>
+        <div id="specialChar" class="warning">
+            <span class="icon">❌</span>
+            <span class="text">İstenilen sembollerden birine sahip değil (#, &, !)</span>
+        </div>
+        <div id="number" class="warning">
+            <span class="icon">❌</span>
+            <span class="text">Bir sayı içermiyor</span>
+        </div>
+        <!-- Butonlar -->
+        <div class="buttons-container">
+            <button onclick="generatePassword()">Generate Random Password</button>
+            <button onclick="saveUserData()">Save Password As Encrypted</button>
+        </div>
+    </div>
+
+    <!-- Hızlı Erişim FAB Butonu -->
+    <div class="fab" onclick="navigateToClearDatabase()">
+        <span>***</span>
+    </div>
+
+    <!-- Javascript Dosyası -->
+    <script src="/js/script.js"></script>
+</body>
+</html>

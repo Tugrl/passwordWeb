@@ -1,0 +1,82 @@
+/* Genel düzen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  background-color: #448aff;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+main {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+button#clear-database {
+  background-color: #448aff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button#clear-database:hover {
+  background-color: #005ecb;
+}
+
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.user-card p {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.delete-btn {
+  color: white;
+  background-color: red;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
