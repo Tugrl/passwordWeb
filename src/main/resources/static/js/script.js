@@ -81,7 +81,7 @@ function generatePassword() {
 
     // Kriterleri kontrol et
     checkPasswordCriteria(password);
-    
+
 }
 
 // Rastgele bir karakter seçmek için yardımcı fonksiyon
@@ -94,6 +94,7 @@ function getRandomCharacter(charSet) {
 function shuffleString(str) {
     return str.split("").sort(() => Math.random() - 0.5).join("");
 }
+
 function saveUserData() {
     // Giriş alanlarını al
     const username = document.getElementById("usernameField").value;
@@ -127,15 +128,29 @@ function saveUserData() {
 
     // Kullanıcı bilgilerini kaydet
     const userData = {
-        username: username,
+        userName: username,
         name: name,
         surname: surname,
-        password: btoa(password), // Şifreyi şifreleyerek sakla
+        userPassword: password,
     };
 
-    const savedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    savedUsers.push(userData);
-    localStorage.setItem("users", JSON.stringify(savedUsers));
+   // Fetch API ile backend'e POST isteği gönderme
+       fetch('/api/user/register', {
+           method: 'POST',  // POST isteği
+           headers: {
+               'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(userData)  // Kullanıcı verisini JSON olarak gönderiyoruz
+       })
+       .then(response => response.json())
+       .then(data => {
+           console.log('Success:', data);
+           alert("Fetch içine girildi.");
+       })
+       .catch((error) => {
+           console.error('Error:', error);
+           alert("Bir hata oluştu, tekrar deneyin.");
+       });
 
     // Giriş alanlarını sıfırla
     document.getElementById("usernameField").value = "";
