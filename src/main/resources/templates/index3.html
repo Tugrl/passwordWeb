@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/styles3.css">
+</head>
+<body>
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+        <div id="error-message" class="error-message"></div>
+    </form>
+</div>
+
+<!-- Kullanıcı bilgilerini gösterecek boş blok -->
+<div class="user-info-container">
+    <h3>User Information</h3>
+    <p id="user-username"><strong>Username:</strong> -</p>
+    <p id="user-name"><strong>Name:</strong> -</p>
+    <p id="user-surname"><strong>Surname:</strong> -</p>
+</div>
+
+
+
+
+<script src="/js/script3.js"></script>
+</body>
+</html>
