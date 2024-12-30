@@ -16,4 +16,7 @@ public class HomeController {
         return "index2";  // index2.html sayfasını Thymeleaf ile render eder
     }
 
+    @GetMapping("/index3")
+    public String redirectToIndex3(){ return "index3";}
+
 }
