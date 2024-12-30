@@ -1,12 +1,13 @@
 package com.example.newpasswordApp;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         // Şifreyi şifreleyerek kaydet
         String encodedPassword = passwordEncoder.encode(user.getUserPassword());
         user.setUserPassword(encodedPassword);
@@ -29,6 +30,33 @@ public class UserController {
         User userSaved = userRepository.save(user);
         return ResponseEntity.ok(userSaved);
     }
+
+    @GetMapping("/allusers")
+    public ResponseEntity<List<User>> takeAllUsers() {
+        List<User> users = userRepository.findAll();
+        return ResponseEntity.status(HttpStatus.CREATED).body(users);
+    }
+
+    @DeleteMapping("/delete/{uuid}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer uuid){
+        Optional<User> userOptional = userRepository.findById(uuid);
+        if (userOptional.isPresent()){
+            userRepository.deleteById(uuid);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return null;
+    }
+
+    @DeleteMapping("/clear")
+    public ResponseEntity<Void> deleteAllUsers() {
+        try {
+            userRepository.deleteAll(); // Tüm kullanıcıları siler
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // Başarılı silme işlemi için 204 döner
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Hata durumunda 500 döner
+        }
+    }
+
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
@@ -51,7 +79,7 @@ public class UserController {
         }
 
         System.out.println("Giriş başarılı.");
-        LoginResponse login= new LoginResponse("Login Successful",user);
+        LoginResponse login = new LoginResponse("Login Successful", user);
         return ResponseEntity.ok(login);
     }
 
