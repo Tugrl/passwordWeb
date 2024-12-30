@@ -1,3 +1,6 @@
+function navigateToLogin() {
+      window.location.href = '/index3';
+}
 // Verileri yükleme fonksiyonu
 function loadUserData() {
     const userList = document.getElementById("user-list");
