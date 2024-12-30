@@ -6,13 +6,13 @@ function checkPasswordCriteria(password) {
     // Kriterleri kontrol et
     const hasUppercase = /[A-Z]/.test(password);
     const isLongEnough = password.length >= 8;
-    const hasSpecialChar = /[#!&]/.test(password);
+    const hasSpecialChar = /[#.!&]/.test(password);
     const hasNumber = /\d/.test(password); // Sayı içeriğini kontrol et
 
     // Her kriteri güncelle
     updateCriteria("uppercase", hasUppercase, "Büyük harf içeriyor", "Büyük harfli karaktere sahip değil");
     updateCriteria("length", isLongEnough, "Yeterli uzunlukta", "Minimum uzunluk 8 karakter olmalıdır");
-    updateCriteria("specialChar", hasSpecialChar, "Geçerli bir sembol içeriyor (#, &, !)", "İstenilen sembollerden birine sahip değil (#, &, !)");
+    updateCriteria("specialChar", hasSpecialChar, "Geçerli bir sembol içeriyor (# . & !)", "İstenilen sembollerden birine sahip değil (# . & !)");
     updateCriteria("number", hasNumber, "Bir sayı içeriyor", "Bir sayı içermiyor");
 }
 
@@ -58,7 +58,7 @@ function generatePassword() {
     const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
     const numbers = "0123456789";
-    const specialChars = "#!&";
+    const specialChars = "#.!&";
     const allChars = uppercaseChars + lowercaseChars + numbers + specialChars;
 
     // Rastgele karakterleri seçerek kriterleri garanti altına al
@@ -107,7 +107,7 @@ function saveUserData() {
     const hasNumber = /\d/.test(password);
     const hasNumberName = /\d/.test(name);
     const hasNumberSurname = /\d/.test(surname);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const hasSpecialChar = /[!@#.$%^&*(),.?":{}|<>]/.test(password);
     const isLongEnough = password.length >= 8;
 
     if (!username || !name || !surname || !password) {
