@@ -15,7 +15,6 @@ public class UserController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    // Constructor Dependency Injection
     public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -23,7 +22,6 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        // Şifreyi şifreleyerek kaydet
         String encodedPassword = passwordEncoder.encode(user.getUserPassword());
         user.setUserPassword(encodedPassword);
 
@@ -50,35 +48,24 @@ public class UserController {
     @DeleteMapping("/clear")
     public ResponseEntity<Void> deleteAllUsers() {
         try {
-            userRepository.deleteAll(); // Tüm kullanıcıları siler
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // Başarılı silme işlemi için 204 döner
+            userRepository.deleteAll();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Hata durumunda 500 döner
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
-        System.out.println("Giriş yapmaya çalışan kullanıcı: " + loginRequest.getUser_name());
 
         User user = userRepository.findByUserName(loginRequest.getUser_name());
         if (user == null) {
-            System.out.println("Kullanıcı bulunamadı.");
             return ResponseEntity.status(401).body("Invalid username or password");
         }
-
-        System.out.println("Veritabanında saklanan şifre: " + user.getUserPassword());
-        System.out.println("Girilen şifre: " + loginRequest.getUser_password());
-
         boolean matches = passwordEncoder.matches(loginRequest.getUser_password(), user.getUserPassword());
-        System.out.println("Şifre eşleşti mi? " + matches);
-
         if (!matches) {
             return ResponseEntity.status(401).body("Invalid username or password");
         }
 
-        System.out.println("Giriş başarılı.");
         LoginResponse login = new LoginResponse("Login Successful", user);
         return ResponseEntity.ok(login);
     }

@@ -4,7 +4,6 @@ public class LoginRequest {
     private String user_name;
     private String user_password;
 
-    // Getter ve Setter
     public String getUser_name() {
         return user_name;
     }

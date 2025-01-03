@@ -4,13 +4,11 @@ public class LoginResponse {
     private String message;
     private User user;
 
-    // Constructor
     public LoginResponse(String message, User user) {
         this.message = message;
         this.user = user;
     }
 
-    // Getter ve Setter
     public String getMessage() {
         return message;
     }
